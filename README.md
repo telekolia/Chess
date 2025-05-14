@@ -8,3 +8,12 @@
 - Проверка на шах/мат
 - Выбор таймера
 - Запись ходов для возможности продолжить игру или посмотреть повтор
+
+# Использованные материалы
+### Набор тайлов "Pixel Chess"
+
+CC0 1.0 Universal (CC0 1.0)
+Credits to the author is always appreciate
+
+Credits
+Ajay Karat | Devil's Work.shop http://devilswork.shop/
