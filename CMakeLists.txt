@@ -6,11 +6,15 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 
 set(SOURCES
-    src/main.cpp
+    src/Main.cpp
+    src/Menu/Menu.cpp
+    src/Interface/src/Button.cpp
 )
 
-# set(HEADERS
-# )
+set(HEADERS
+    src/Menu/Menu.hpp
+    src/Interface/Button.hpp
+)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/../bin)
 
