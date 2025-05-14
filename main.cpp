@@ -57,7 +57,7 @@ void showMenu(sf::RenderWindow& window) {
     Button exitButton("Exit", font, 30, sf::Vector2f(300, 300), sf::Color::White, sf::Color::Red);
 
     // Текст заголовка
-    sf::Text title("Chess", font, 50);
+    sf::Text title("Chess by Telekolia 8)", font, 50);
     title.setFillColor(sf::Color::Yellow);
     title.setPosition(250, 100);
 
@@ -100,6 +100,7 @@ void showChessBoard(sf::RenderWindow& window) {
     font.loadFromFile("../font/Tiny5-Regular.ttf");
 
     sf::Text text("Chess board", font, 30);
+    text.setFillColor(sf::Color::Yellow);
     text.setPosition(250, 300);
 
     while (window.isOpen()) {
@@ -108,16 +109,20 @@ void showChessBoard(sf::RenderWindow& window) {
             if (event.type == sf::Event::Closed) {
                 window.close();
             }
+
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+                window.close();
+            }
         }
 
-        window.clear(sf::Color::White);
+        window.clear(sf::Color::Black);
         window.draw(text);
         window.display();
     }
 }
 
 int main() {
-    sf::RenderWindow window(sf::VideoMode(800, 600), "Шахматы");
+    sf::RenderWindow window(sf::VideoMode(1080, 720), "Шахматы");
 
     // Показываем меню
     showMenu(window);
