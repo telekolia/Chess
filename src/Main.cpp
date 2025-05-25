@@ -5,6 +5,7 @@
 #include "Chessboard/Chessboard.hpp"
 
 int main() {
+    int x=147, y=122;
     sf::RenderWindow window(sf::VideoMode(1080, 720), "Шахматы", sf::Style::Default);
 
     // Показываем меню
@@ -13,6 +14,7 @@ int main() {
     // Если окно не закрыто (нажата кнопка Старт), показываем шахматную доску
     if (window.isOpen()) {
         showChessBoard(window);
+        showFigure(window, x, y);
     }
 
     return 0;
