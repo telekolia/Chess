@@ -21,6 +21,7 @@ void showMenu(sf::RenderWindow& window) {
     title.setFillColor(sf::Color::Yellow);
     title.setPosition(250, 100);
 
+    // Так называемый "game loop"
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {
