@@ -25,7 +25,7 @@ void showChessBoard(sf::RenderWindow& window) {
             }
         }
 
-        window.clear(sf::Color(0, 110, 55));
+        window.clear(sf::Color(0, 55, 22));
         window.draw(board);
         window.display();
     }
