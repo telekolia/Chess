@@ -66,12 +66,9 @@ int showTimeMenu(sf::RenderWindow& window) {
     int selectedTime = 0;
 
     std::vector<std::shared_ptr<TimeOption>> timeButtons = {
-        std::make_shared<TimeOption>(60, font, sf::Vector2f(300, 230)),
-        std::make_shared<TimeOption>(30, font, sf::Vector2f(300, 280)),
-        std::make_shared<TimeOption>(15, font, sf::Vector2f(300, 330)),
-        std::make_shared<TimeOption>(5, font, sf::Vector2f(500, 230)),
-        std::make_shared<TimeOption>(3, font, sf::Vector2f(500, 280)),
-        std::make_shared<TimeOption>(1, font, sf::Vector2f(500, 330)),
+        std::make_shared<TimeOption>(60, font, sf::Vector2f(300, 230)), std::make_shared<TimeOption>(30, font, sf::Vector2f(300, 280)),
+        std::make_shared<TimeOption>(15, font, sf::Vector2f(300, 330)), std::make_shared<TimeOption>(5, font, sf::Vector2f(500, 230)),
+        std::make_shared<TimeOption>(3, font, sf::Vector2f(500, 280)),  std::make_shared<TimeOption>(1, font, sf::Vector2f(500, 330)),
     };
 
     Button returnButton("Return", font, 28, sf::Vector2f(30, 660), sf::Color::White, sf::Color::Red);
