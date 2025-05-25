@@ -3,23 +3,23 @@
 
 #include "../Interface/Button.hpp"
 
-// Функция для создания меню
 void showMenu(sf::RenderWindow& window) {
-    // Загрузка шрифта
     sf::Font font;
     if (!font.loadFromFile("../font/Tiny5-Regular.ttf")) {
         std::cerr << "Не удалось загрузить шрифт!" << std::endl;
         return;
     }
 
-    // Создание кнопок
-    Button startButton("Start", font, 30, sf::Vector2f(300, 200), sf::Color::White, sf::Color::Green);
-    Button exitButton("Exit", font, 30, sf::Vector2f(300, 300), sf::Color::White, sf::Color::Red);
+    float centerX = 1080 / 2.f;
 
-    // Текст заголовка
-    sf::Text title("Chess by Telekolia 8)", font, 50);
+    Button startButton("Start", font, 30, sf::Vector2f(centerX - 50, 250), sf::Color::White, sf::Color::Green);
+    Button exitButton("Exit", font, 30, sf::Vector2f(centerX - 50, 350), sf::Color::White, sf::Color::Red);
+
+    sf::Text title("Chess", font, 70);
     title.setFillColor(sf::Color::Yellow);
-    title.setPosition(250, 100);
+
+    sf::FloatRect titleBounds = title.getGlobalBounds();
+    title.setPosition((1080 - titleBounds.width) / 2.f, 100);
 
     while (window.isOpen()) {
         sf::Event event;

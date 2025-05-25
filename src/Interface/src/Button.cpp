@@ -33,6 +33,6 @@ void Button::update(const sf::RenderWindow& window) {
     }
 }
 
-const sf::Text& Button::getText() const {
+sf::Text& Button::getText() {
     return m_text;
 }

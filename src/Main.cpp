@@ -2,25 +2,27 @@
 #include <iostream>
 
 #include "Menu/Menu.hpp"
+#include "Menu/TimeMenu.hpp"
 
-// Функция для отображения шахматной доски (заглушка)
-void showChessBoard(sf::RenderWindow& window) {
-    // Здесь будет код для отображения шахматной доски
+void showChessBoard(sf::RenderWindow& window, int minutesPerPlayer) {
     sf::Font font;
-    font.loadFromFile("../font/Tiny5-Regular.ttf");
+    if (!font.loadFromFile("../font/Tiny5-Regular.ttf")) {
+        std::cerr << "Не удалось загрузить шрифт!" << std::endl;
+        return;
+    }
 
-    sf::Text text("Chess board", font, 30);
+    std::string label = (minutesPerPlayer > 0)
+        ? "Chess board - " + std::to_string(minutesPerPlayer) + " min"
+        : "Chess board without timer";
+
+    sf::Text text(label, font, 30);
     text.setFillColor(sf::Color::Yellow);
-    text.setPosition(250, 300);
+    text.setPosition(300, 50);
 
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed) {
-                window.close();
-            }
-
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+            if (event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
                 window.close();
             }
         }
@@ -34,12 +36,20 @@ void showChessBoard(sf::RenderWindow& window) {
 int main() {
     sf::RenderWindow window(sf::VideoMode(1080, 720), "Шахматы");
 
-    // Показываем меню
-    showMenu(window);
+    while (window.isOpen()) {
+        showMenu(window);  // Главное меню
 
-    // Если окно не закрыто (нажата кнопка Старт), показываем шахматную доску
-    if (window.isOpen()) {
-        showChessBoard(window);
+        if (!window.isOpen()) break;
+
+        int selectedTime = showTimeMenu(window);  // Выбор времени (или его пропуск)
+
+        if (!window.isOpen()) break;
+
+        // Пользователь вернулся на главное меню — перезапускаем цикл
+        if (selectedTime == -1) continue;
+
+        // Иначе переходим на доску
+        showChessBoard(window, selectedTime);
     }
 
     return 0;
