@@ -15,8 +15,8 @@ class Piece : public sf::Drawable {
     bool m_playerColor;   // true == Белый , false == Чёрный
     int m_position;  // 0-63 клетка на доске, -1 съеден
     int enPassant; // Речь о взятии на проходе
-    bool m_moved;
-    bool isTogled;
+    bool m_moved; // Двигалась ли фигура с начала игры
+    bool isToggled = false;
 
     void setTexture();
     void move();
@@ -24,7 +24,8 @@ class Piece : public sf::Drawable {
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
  public:
-    Piece(char type = 'P', bool player = true, int pos = -1, bool moved = false);
+    Piece();
+    Piece(char type , bool player, int pos, bool moved = false);
 
     void setPiece(char type, bool player, int pos, bool moved = false);
 
@@ -41,4 +42,6 @@ class Piece : public sf::Drawable {
     int getEnPassant() { return enPassant; }
     std::vector<int>& getPossibleMoves() { return possibleMoves; }
     std::vector<int>& getDangerMoves() { return dangerMoves; }
+
+    void toggle();
 };

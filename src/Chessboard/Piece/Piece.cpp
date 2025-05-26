@@ -10,14 +10,21 @@ const char* chessThemeToggled[12] = {"../res/chess/white_pawn.png",   "../res/ch
                                      "../res/chess/black_pawn.png",   "../res/chess/black_rook.png",  "../res/chess/black_knight.png",
                                      "../res/chess/black_bishop.png", "../res/chess/black_queen.png", "../res/chess/black_king.png"};
 
-Piece::Piece(char type, bool player, int pos, bool moved)
-        : m_type(type), m_playerColor(player), m_position(-1), m_moved(true), enPassant(-1) {}
+Piece::Piece() {
+    m_type = 'P';
+    m_playerColor = true;
+    m_position = -1;
+    m_moved = false;
+}
 
-void Piece::setPiece(char type, bool player, int pos, bool moved){
+Piece::Piece(char type, bool player, int pos, bool moved) : m_type(type), m_playerColor(player), m_position(-1), m_moved(true), enPassant(-1) {
+}
+
+void Piece::setPiece(char type, bool player, int pos, bool moved) {
     setType(type);
     setPlayer(player);
-    setPosition(pos); //m_moved true
-    setMoved(moved); // m_moved false
+    setPosition(pos);  // m_moved true
+    setMoved(moved);   // m_moved false
 }
 
 void Piece::setType(char ch) {
@@ -26,34 +33,32 @@ void Piece::setType(char ch) {
 }
 
 void Piece::setPlayer(bool bl) {
-        m_playerColor = bl;
-        setTexture();
-    }
+    m_playerColor = bl;
+    setTexture();
+}
 
 void Piece::setPosition(int pos) {
     m_position = pos;
     move();
 }
 
-void Piece::move(){
-    if(m_position<=-1 || 64<=m_position){
+void Piece::move() {
+    if (m_position <= -1 || 64 <= m_position) {
         m_position = -1;
         m_sprite.setColor(sf::Color(0, 0, 0));
-        m_sprite.setPosition(sf::Vector2f((m_position % 8) * 64.f + 32.f, (m_position / 8) * 64.f + 32.f));
+        m_sprite.setPosition(sf::Vector2f((m_position % 8) * 90.f, (m_position / 8) * 90.f));
         possibleMoves.clear();
         m_moved = true;
-    }
-    else{
-        m_sprite.setPosition(sf::Vector2f((m_position % 8) * 64.f + 32.f, (m_position / 8) * 64.f + 32.f));
+    } else {
+        m_sprite.setPosition(sf::Vector2f((m_position % 8) * 90.f, (m_position / 8) * 90.f));
         m_moved = true;
     }
     return;
 }
 
-void Piece::setTexture(){
+void Piece::setTexture() {
     m_sprite = sf::Sprite();
-    switch (m_type)
-    {
+    switch (m_type) {
         case 'P':
             m_texture.loadFromFile(m_playerColor ? chessTheme[1] : chessTheme[7]);
             m_textureToggled.loadFromFile(m_playerColor ? chessThemeToggled[1] : chessThemeToggled[7]);
@@ -88,4 +93,13 @@ void Piece::setTexture(){
 
 void Piece::draw(sf::RenderTarget& target, sf::RenderStates states) const {
     target.draw(m_sprite, states);
+}
+
+void Piece::toggle() {
+    isToggled = !isToggled;
+    if (isToggled) {
+        m_sprite.setTexture(m_textureToggled);
+    } else {
+        m_sprite.setTexture(m_texture);
+    }
 }

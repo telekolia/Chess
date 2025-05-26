@@ -11,6 +11,8 @@ set(SOURCES
     src/Interface/src/Button.cpp
     src/Chessboard/Chessboard.cpp
     src/Chessboard/Board/Board.cpp
+    src/Chessboard/Piece/Piece.cpp
+    src/Chessboard/ChessEngine/ChessEngine.cpp
 )
 
 set(HEADERS
@@ -18,6 +20,8 @@ set(HEADERS
     src/Interface/Button.hpp
     src/Chessboard/Chessboard.hpp
     src/Chessboard/Board/Board.hpp
+    src/Chessboard/Piece/Piece.hpp
+    src/Chessboard/ChessEngine/ChessEngine.hpp
 )
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/../bin)

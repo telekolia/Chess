@@ -6,6 +6,7 @@
 
 int main() {
     sf::RenderWindow window(sf::VideoMode(1080, 720), "Шахматы", sf::Style::Default);
+    window.setVerticalSyncEnabled(false);
 
     // Показываем меню
     ShowMenu(window);
