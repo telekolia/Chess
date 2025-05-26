@@ -8,11 +8,11 @@ int main() {
     sf::RenderWindow window(sf::VideoMode(1080, 720), "Шахматы", sf::Style::Default);
 
     // Показываем меню
-    showMenu(window);
+    ShowMenu(window);
 
     // Если окно не закрыто (нажата кнопка Старт), показываем шахматную доску
     if (window.isOpen()) {
-        showChessBoard(window);
+        ShowChessboard(window);
     }
 
     return 0;

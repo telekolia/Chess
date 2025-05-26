@@ -10,12 +10,14 @@ set(SOURCES
     src/Menu/Menu.cpp
     src/Interface/src/Button.cpp
     src/Chessboard/Chessboard.cpp
+    src/Chessboard/Board/Board.cpp
 )
 
 set(HEADERS
     src/Menu/Menu.hpp
     src/Interface/Button.hpp
     src/Chessboard/Chessboard.hpp
+    src/Chessboard/Board/Board.hpp
 )
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/../bin)

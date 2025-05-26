@@ -3,8 +3,8 @@
 
 #include "../Interface/Button.hpp"
 
-// Функция для создания меню
-void showMenu(sf::RenderWindow& window) {
+// Функция запуска сцены главного меню
+void ShowMenu(sf::RenderWindow& window) {
     // Загрузка шрифта
     sf::Font font;
     if (!font.loadFromFile("../font/Tiny5-Regular.ttf")) {

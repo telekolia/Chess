@@ -1,3 +1,3 @@
 #include <SFML/Graphics.hpp>
 
-void showChessBoard(sf::RenderWindow& window);
+void ShowChessboard(sf::RenderWindow& window);
