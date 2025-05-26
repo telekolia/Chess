@@ -14,6 +14,6 @@ void Board::load(){
 }
 
 // Рендер доски
-void Board::draw(sf::RenderWindow& window) const{
-    window.draw(m_sprite);
+void Board::draw(sf::RenderTarget& target, sf::RenderStates states) const {
+    target.draw(m_sprite, states);
 }

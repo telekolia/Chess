@@ -2,13 +2,12 @@
 #include <array>
 #include <iostream>
 
-class Board {
+class Board : public sf::Drawable {
  private:
     sf::Texture m_texture;
     sf::Sprite m_sprite;
-
+    virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
  public:
     Board();
     void load();
-    void draw(sf::RenderWindow& window) const;
 };
