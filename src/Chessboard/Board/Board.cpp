@@ -5,7 +5,7 @@ Board::Board() {
     load();
 }
 
-// Member function that sets Board stuff, can choose square colors in parameters
+// Загрузка ресурсов доски и установка параметров при её инициализации
 void Board::load(){
     m_texture.loadFromFile("../res/chess_green/board.png"); // путь всегда пишем из build
     m_sprite.setTexture(m_texture);
@@ -13,7 +13,7 @@ void Board::load(){
     m_sprite.scale(4.f, 4.f);
 }
 
-// Draw class on SFML Window
+// Рендер доски
 void Board::draw(sf::RenderWindow& window) const{
     window.draw(m_sprite);
 }
