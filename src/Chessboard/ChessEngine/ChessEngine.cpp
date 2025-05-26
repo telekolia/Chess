@@ -1,5 +1,5 @@
 #include "../ChessEngine/ChessEngine.hpp"
-// Множество кода было взаимствовано
+// Часть кода была взаимствована
 
 ChessEngine::ChessEngine() : board() {
     font.loadFromFile("../font/Tiny5-Regular.ttf");
@@ -112,8 +112,6 @@ void ChessEngine::createMovesCircules() {
         tmp.setFillColor(sf::Color::Cyan);
         possibleMovesCircules.push_back(tmp);
     }
-
-    selectedPiece->toggle();
 }
 
 bool ChessEngine::selectPiece(int pos) {
