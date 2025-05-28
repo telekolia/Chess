@@ -1,7 +1,7 @@
 #include "../ChessEngine/ChessEngine.hpp"
 // Часть кода была взаимствована
 
-ChessEngine::ChessEngine() : board() {
+ChessEngine::ChessEngine() {
     font.loadFromFile("../font/Tiny5-Regular.ttf");
 
     textSituation.setFont(font);
@@ -68,7 +68,6 @@ void ChessEngine::updateInfo() {
 
 // Не перепутайте со смыслом "ничья", тут перегружаем функцию рисовщика SFML, чтобы удобно рисовать игру одной коммандой
 void ChessEngine::draw(sf::RenderTarget& target, sf::RenderStates states) const {
-    target.draw(board);
     target.draw(textSituation);
 
     for (int i = 0; i < 16; i++) {

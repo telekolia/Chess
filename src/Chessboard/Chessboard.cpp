@@ -2,6 +2,7 @@
 #include <iostream>
 #include "ChessEngine/ChessEngine.hpp"
 #include "../Interface/Button.hpp"
+#include "Board/Board.hpp"
 
 // функция работы сцены игры
 void ShowChessboard(sf::RenderWindow& window) {
@@ -14,6 +15,8 @@ void ShowChessboard(sf::RenderWindow& window) {
     Button restartButton("Restart", font, 48, sf::Vector2f(820, 600), sf::Color::Magenta, sf::Color::Yellow);
     Button exitButton("Exit", font, 48, sf::Vector2f(850, 650), sf::Color::Magenta, sf::Color::Yellow);
 
+    Board board;
+
     ChessEngine chess;
 
     while (window.isOpen()) {
@@ -25,12 +28,12 @@ void ShowChessboard(sf::RenderWindow& window) {
             if(event.type == sf::Event::MouseButtonPressed){
                 if(event.mouseButton.button == sf::Mouse::Left){
                     if((event.mouseButton.x >= 0) && (event.mouseButton.x <= 720) && (event.mouseButton.y >= 0) && (event.mouseButton.y <= 720)){
-                        unsigned int buttonPos{(event.mouseButton.x/90) + ((event.mouseButton.y/90) * (8 * (720/window.getSize().y)))};
+                        int squareNumber = board.getMousePosition(window);
 
                         if(!chess.getSelected())
-                            chess.selectPiece(buttonPos);
+                            chess.selectPiece(squareNumber);
                         else
-                            chess.moveSelected(buttonPos);
+                            chess.moveSelected(squareNumber);
                     }
                     if(restartButton.isMouseOver(window)){
                         chess.restart();
@@ -46,6 +49,7 @@ void ShowChessboard(sf::RenderWindow& window) {
         }
 
         window.clear(sf::Color(0, 55, 22));
+        window.draw(board);
         window.draw(chess);
         window.draw(restartButton);
         window.draw(exitButton);

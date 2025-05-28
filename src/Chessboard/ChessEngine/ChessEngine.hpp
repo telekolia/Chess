@@ -2,12 +2,10 @@
 #include <array>
 #include <vector>
 #include <iostream>
-#include "../Board/Board.hpp"
 #include "../Piece/Piece.hpp"
 
 class ChessEngine: public sf::Drawable{
 private:
-    Board board;
     std::array<Piece, 16> whitePieces;
     std::array<Piece, 16> blackPieces;
     Piece* selectedPiece;
