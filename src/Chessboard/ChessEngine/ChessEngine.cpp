@@ -4,24 +4,11 @@
 ChessEngine::ChessEngine() : board() {
     font.loadFromFile("../font/Tiny5-Regular.ttf");
 
-    infoRestart.setFillColor(sf::Color::White);
-    infoRestart.setOutlineThickness(-5.f);
-    infoRestart.setOutlineColor(sf::Color::Black);
-    infoRestart.setPosition(sf::Vector2f(720.f, 0.f));
-    infoRestart.setSize(sf::Vector2f(256.f, 50.f));
-
-    textRestart.setFont(font);
-    textRestart.setString("RESTART");
-    textRestart.setCharacterSize(24);
-    textRestart.setStyle(sf::Text::Bold);
-    textRestart.setFillColor(sf::Color::Black);
-    textRestart.setPosition(infoRestart.getPosition().x + 75.f, infoRestart.getPosition().y + 10.f);
-
     textSituation.setFont(font);
-    textSituation.setCharacterSize(24);
+    textSituation.setCharacterSize(48);
     textSituation.setStyle(sf::Text::Bold);
     textSituation.setFillColor(sf::Color::White);
-    textSituation.setPosition(530.f, 110.f);
+    textSituation.setPosition(750.f, 110.f);
     restart();
 }
 
@@ -33,26 +20,26 @@ void ChessEngine::restart() {
     turn = 1;
 
     blackPieces[7].setPiece('R', false, 0);
-    blackPieces[6].setPiece('N', false, 1);
+    blackPieces[6].setPiece('H', false, 1);
     blackPieces[5].setPiece('B', false, 2);
     blackPieces[4].setPiece('Q', false, 3);
     blackPieces[3].setPiece('K', false, 4);
     blackPieces[2].setPiece('B', false, 5);
-    blackPieces[1].setPiece('N', false, 6);
+    blackPieces[1].setPiece('H', false, 6);
     blackPieces[0].setPiece('R', false, 7);
 
     whitePieces[0].setPiece('R', true, 56);
-    whitePieces[1].setPiece('N', true, 57);
+    whitePieces[1].setPiece('H', true, 57);
     whitePieces[2].setPiece('B', true, 58);
     whitePieces[3].setPiece('Q', true, 59);
     whitePieces[4].setPiece('K', true, 60);
     whitePieces[5].setPiece('B', true, 61);
-    whitePieces[6].setPiece('N', true, 62);
+    whitePieces[6].setPiece('H', true, 62);
     whitePieces[7].setPiece('R', true, 63);
 
-    for (int i = 0; i < 8; ++i) {
-        whitePieces[i].setPiece('P', true, 48 + i);
-        blackPieces[i].setPiece('P', false, 8 + i);
+    for (int i = 8; i < 16; ++i) {
+        whitePieces[i].setPiece('P', true, 48 + (i - 8));
+        blackPieces[i].setPiece('P', false, 8 + (i - 8));
     }
 
     generatePossibleMoves();
@@ -82,19 +69,17 @@ void ChessEngine::updateInfo() {
 // Не перепутайте со смыслом "ничья", тут перегружаем функцию рисовщика SFML, чтобы удобно рисовать игру одной коммандой
 void ChessEngine::draw(sf::RenderTarget& target, sf::RenderStates states) const {
     target.draw(board);
-    target.draw(infoRestart);
-    target.draw(textRestart);
     target.draw(textSituation);
+
+    for (int i = 0; i < 16; i++) {
+        target.draw(whitePieces[i]);
+        target.draw(blackPieces[i]);
+    }
 
     if (selectedPiece != nullptr && selected) {
         for (int i = 0; i < possibleMovesCircules.size(); i++) {
             target.draw(possibleMovesCircules.at(i));
         }
-    }
-
-    for (int i = 0; i < 16; i++) {
-        target.draw(whitePieces[i]);
-        target.draw(blackPieces[i]);
     }
 }
 

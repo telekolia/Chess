@@ -14,10 +14,7 @@ private:
     std::vector<sf::CircleShape> possibleMovesCircules;
     std::string lastMove;
 
-    sf::RectangleShape infoRestart;
-
     sf::Font font;
-    sf::Text textRestart;
     sf::Text textTurn;
     sf::Text textSituation;
 

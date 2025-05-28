@@ -16,8 +16,8 @@ Button::Button(const std::string& text, const sf::Font& font, unsigned int chara
     m_bounds = m_text.getGlobalBounds();
 }
 
-void Button::draw(sf::RenderWindow& window) {
-    window.draw(m_text);
+void Button::draw(sf::RenderTarget& target, sf::RenderStates states) const {
+    target.draw(m_text);
 }
 
 bool Button::isMouseOver(const sf::RenderWindow& window) const {

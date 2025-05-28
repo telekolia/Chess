@@ -12,6 +12,7 @@ set(SOURCES
     src/Chessboard/Chessboard.cpp
     src/Chessboard/Board/Board.cpp
     src/Chessboard/Piece/Piece.cpp
+    src/Chessboard/Piece/PieceTextures.cpp
     src/Chessboard/ChessEngine/ChessEngine.cpp
 )
 
@@ -21,11 +22,16 @@ set(HEADERS
     src/Chessboard/Chessboard.hpp
     src/Chessboard/Board/Board.hpp
     src/Chessboard/Piece/Piece.hpp
+    src/Chessboard/Piece/PieceTextures.hpp
     src/Chessboard/ChessEngine/ChessEngine.hpp
 )
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/../bin)
 
 add_executable(Chess ${SOURCES})
+
+if(ENABLE_DEBUG)
+    target_compile_options(Chess PRIVATE -g)
+endif()
 
 target_link_libraries(Chess sfml-system sfml-window sfml-graphics sfml-network sfml-audio)

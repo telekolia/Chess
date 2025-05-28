@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "PieceTextures.hpp"
 
 class Piece : public sf::Drawable {
  private:
