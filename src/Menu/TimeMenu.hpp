@@ -22,7 +22,7 @@ class TimeOption {
     int getTime() const { return timeValue; }
 
     void draw(sf::RenderWindow& window) {
-        button.draw(window);
+        window.draw(button);
 
         float circleX = button.getText().getPosition().x - 30;
         float circleY = button.getText().getPosition().y + 8;

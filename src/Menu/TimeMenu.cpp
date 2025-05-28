@@ -14,7 +14,7 @@ class TimerOption {
     }
 
     void draw(sf::RenderWindow& window) {
-        button.draw(window);
+        window.draw(button);
 
         float circleX = button.getText().getPosition().x - 30;
         float circleY = button.getText().getPosition().y + 8;
@@ -135,8 +135,8 @@ int showTimeMenu(sf::RenderWindow& window) {
                 btn->draw(window);
         }
 
-        returnButton.draw(window);
-        startButton.draw(window);
+        window.draw(returnButton);
+        window.draw(startButton);
         window.display();
     }
 

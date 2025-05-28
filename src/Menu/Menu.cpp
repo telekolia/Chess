@@ -47,8 +47,8 @@ void showMenu(sf::RenderWindow& window) {
         // Отрисовка
         window.clear(sf::Color::Black);
         window.draw(title);
-        startButton.draw(window);
-        exitButton.draw(window);
+        window.draw(startButton);
+        window.draw(exitButton);
         window.display();
     }
 }

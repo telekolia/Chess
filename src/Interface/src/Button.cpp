@@ -11,12 +11,13 @@ Button::Button(const std::string& text, const sf::Font& font, unsigned int chara
     m_text.setCharacterSize(characterSize);
     m_text.setFillColor(color);
     m_text.setPosition(position);
+
     // Устанавливаем границы кнопки (для проверки наведения)
     m_bounds = m_text.getGlobalBounds();
 }
 
-void Button::draw(sf::RenderWindow& window) {
-    window.draw(m_text);
+void Button::draw(sf::RenderTarget& target, sf::RenderStates states) const {
+    target.draw(m_text);
 }
 
 bool Button::isMouseOver(const sf::RenderWindow& window) const {
@@ -32,6 +33,6 @@ void Button::update(const sf::RenderWindow& window) {
     }
 }
 
-sf::Text& Button::getText() {
+const sf::Text& Button::getText() const {
     return m_text;
 }
