@@ -11,7 +11,6 @@ Button::Button(const std::string& text, const sf::Font& font, unsigned int chara
     m_text.setCharacterSize(characterSize);
     m_text.setFillColor(color);
     m_text.setPosition(position);
-
     // Устанавливаем границы кнопки (для проверки наведения)
     m_bounds = m_text.getGlobalBounds();
 }
