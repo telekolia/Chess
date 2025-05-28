@@ -17,5 +17,5 @@ class Button {
     bool isMouseOver(const sf::RenderWindow& window) const;
     void update(const sf::RenderWindow& window);
 
-    const sf::Text& getText() const;
+    sf::Text& getText();
 };
