@@ -5,7 +5,7 @@
 #include "Board/Board.hpp"
 
 // функция работы сцены игры
-void ShowChessboard(sf::RenderWindow& window) {
+void ShowChessboard(sf::RenderWindow& window, int gameLatensy) {
     sf::Font font;
     if (!font.loadFromFile("../font/Tiny5-Regular.ttf")) {
         std::cerr << "Не удалось загрузить шрифт!" << std::endl;

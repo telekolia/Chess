@@ -1,3 +1,3 @@
 #include <SFML/Graphics.hpp>
 
-void ShowChessboard(sf::RenderWindow& window);
+void ShowChessboard(sf::RenderWindow& window, int gameLatensy);
