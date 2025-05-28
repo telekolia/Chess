@@ -16,8 +16,8 @@ void Board::load(){
     float y = 0;
 
     for (int i = 0; i < 64; ++i) {
-        x = 88.f * (i % 8);
-        y = 88.f * (i / 8);
+        x = 88.f * (i % 8) - 8.f;
+        y = 88.f * (i / 8) - 8.f;
         squares[i].height = 88;
         squares[i].width = 88;
         squares[i].left = x;
