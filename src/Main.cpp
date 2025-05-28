@@ -11,13 +11,14 @@ void showChessBoard(sf::RenderWindow& window, int minutesPerPlayer) {
         return;
     }
 
-    std::string label = (minutesPerPlayer > 0)
-        ? "Chess board - " + std::to_string(minutesPerPlayer) + " min"
-        : "Chess board without timer";
+    std::string label = (minutesPerPlayer > 0) ? "Chess board - " + std::to_string(minutesPerPlayer) + " min" : "Chess board without timer";
 
     sf::Text text(label, font, 30);
-    text.setFillColor(sf::Color::Yellow);
-    text.setPosition(300, 50);
+    text.setFillColor(sf::Color::White);
+
+    // Центрируем по ширине
+    sf::FloatRect textBounds = text.getGlobalBounds();
+    text.setPosition((window.getSize().x - textBounds.width) / 2.f, 50);
 
     while (window.isOpen()) {
         sf::Event event;
@@ -39,16 +40,17 @@ int main() {
     while (window.isOpen()) {
         showMenu(window);  // Главное меню
 
-        if (!window.isOpen()) break;
+        if (!window.isOpen())
+            break;
 
         int selectedTime = showTimeMenu(window);  // Выбор времени (или его пропуск)
 
-        if (!window.isOpen()) break;
+        if (!window.isOpen())
+            break;
 
-        // Пользователь вернулся на главное меню — перезапускаем цикл
-        if (selectedTime == -1) continue;
+        if (selectedTime == -1)
+            continue;
 
-        // Иначе переходим на доску
         showChessBoard(window, selectedTime);
     }
 
