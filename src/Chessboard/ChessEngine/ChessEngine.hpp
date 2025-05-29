@@ -56,6 +56,8 @@ public:
 
     void restart();
 
+    bool getPlayerturn(){return playerTurn;};
+
 
 
 };
