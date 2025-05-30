@@ -13,6 +13,7 @@ set(SOURCES
     src/Chessboard/Chessboard.cpp
     src/Chessboard/Board/Board.cpp
     src/Chessboard/Piece/Piece.cpp
+    src/Chessboard/ChessTimer/ChessTimer.cpp
     src/Chessboard/Piece/PieceTextures.cpp
     src/Chessboard/ChessEngine/ChessEngine.cpp
 )
@@ -24,6 +25,7 @@ set(HEADERS
     src/Chessboard/Chessboard.hpp
     src/Chessboard/Board/Board.hpp
     src/Chessboard/Piece/Piece.hpp
+    src/Chessboard/ChessTimer/ChessTimer.hpp
     src/Chessboard/Piece/PieceTextures.hpp
     src/Chessboard/ChessEngine/ChessEngine.hpp
 )

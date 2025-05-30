@@ -58,6 +58,6 @@ public:
 
     bool getPlayerturn(){return playerTurn;};
 
-
+    int getTurn() { return turn; };
 
 };
